@@ -16,7 +16,6 @@
             <a href="index.html" class="logo">Q <span class="accent">AUTOLUX</span></a>
             
             <ul class="nav-links desktop-nav" id="desktop-nav">
-                <li><a href="inventory.html" class="active">Inventory</a></li>
                 <li><a href="financing.html">Financing</a></li>
                 <li><a href="#">About</a></li>
                 <li class="auth-guest"><a href="#" class="signup-trigger">Sign Up</a></li>
@@ -119,55 +118,88 @@
             <p>© 2026 Q AutoLux. Designed for Excellence.</p>
         </div>
     </footer>
-
-    <div class="auth-modal-overlay" id="authModalOverlay">
+   <div class="auth-modal-overlay" id="authModalOverlay">
         <div class="auth-modal" id="authModal">
-            <button class="modal-close" id="modalClose">&times;</button>
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+
             <div class="modal-header">
                 <h2 id="modalTitle">Welcome to Q AutoLux</h2>
-                <p class="modal-subtitle">Login to your concierge dashboard</p>
+                <p class="modal-subtitle">Access your exclusive account or join our private collection</p>
             </div>
+
             <div class="auth-tabs">
                 <button class="tab-btn active" data-tab="login">Login</button>
                 <button class="tab-btn" data-tab="signup">Sign Up</button>
             </div>
+
             <form id="loginForm" class="auth-form active">
                 <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="loginEmail" required placeholder="concierge@qautolux.com">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="your@email.com">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label for="loginPassword">Password</label>
                     <input type="password" id="loginPassword" required placeholder="••••••••">
                 </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
                 <button type="submit" class="btn-gold auth-submit">Sign In</button>
-                <div class="social-divider"><span>or</span></div>
+
+                <div class="social-divider">
+                    <span>or continue with</span>
+                </div>
                 <div class="social-buttons">
                     <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                    <button type="button" class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
                 </div>
             </form>
+
             <form id="signupForm" class="auth-form">
                 <div class="form-group">
-                    <label>Full Name</label>
+                    <label for="signupFullName">Full Name</label>
                     <input type="text" id="signupFullName" required placeholder="John Doe">
                 </div>
                 <div class="form-group">
-                    <label>Email Address</label>
-                    <input type="email" id="signupEmail" required placeholder="john@example.com">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required placeholder="your@email.com">
                 </div>
                 <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" id="signupPhone" required placeholder="+1 234 567 890">
+                    <label for="signupPhone">Phone Number</label>
+                    <input type="tel" id="signupPhone" required placeholder="+1 (555) 123-4567">
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label for="signupPassword">Create Password</label>
                     <input type="password" id="signupPassword" required placeholder="••••••••">
                 </div>
                 <div class="form-group">
-                    <label>Confirm Password</label>
+                    <label for="signupConfirmPassword">Confirm Password</label>
                     <input type="password" id="signupConfirmPassword" required placeholder="••••••••">
                 </div>
-                <button type="submit" class="btn-gold auth-submit">Create Account</button>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox">
+                        I would like to receive exclusive offers, new arrivals & concierge updates
+                    </label>
+                </div>
+                <button type="submit" class="btn-gold auth-submit">Create My Account</button>
+
+                <div class="social-divider">
+                    <span>or sign up with</span>
+                </div>
+                <div class="social-buttons">
+                    <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                    <button type="button" class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
+                </div>
             </form>
         </div>
     </div>

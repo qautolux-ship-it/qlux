@@ -155,6 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupForm = document.getElementById('signupForm');
 
     function openAuthModal(tab = 'login') {
+
+        if (hamburger) hamburger.classList.remove('active');
+        if (mobileOverlay) mobileOverlay.classList.remove('active');
+        body.style.overflow = '';
+
         authOverlay.classList.add('active');
         switchTab(tab);
     }
@@ -174,7 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    if (modalClose) modalClose.addEventListener('click', () => authOverlay.classList.remove('active'));
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            authOverlay.classList.remove('active');
+        });
+    }
+
     tabBtns.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
 
     if (signupForm) {
@@ -246,11 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const dashboardLink = `<li class="dynamic-auth-item"><a href="dashboard.html">Dashboard</a></li>`;
             const logoutLink = `<li class="dynamic-auth-item"><a href="#" id="logoutBtn" style="color:#ff4444 !important;">Logout</a></li>`;
 
-            if(desktopNav) {
+            if (desktopNav) {
                 desktopNav.insertAdjacentHTML('beforeend', dashboardLink);
                 desktopNav.insertAdjacentHTML('beforeend', logoutLink);
             }
-            if(mobileNavList) {
+            if (mobileNavList) {
                 mobileNavList.insertAdjacentHTML('beforeend', dashboardLink);
                 mobileNavList.insertAdjacentHTML('beforeend', logoutLink);
             }
@@ -259,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (logoutBtn) {
                 logoutBtn.onclick = async (e) => {
                     e.preventDefault();
-                    if(confirm("Sign out?")) {
+                    if (confirm("Sign out?")) {
                         await signOut(auth);
                         window.location.reload();
                     }
