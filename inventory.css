@@ -1,0 +1,580 @@
+:root {
+    --gold: #D4AF37;
+    --dark: #0f0f0f;
+    --white: #ffffff;
+    --gray: #f8f8f8;
+    --text-muted: #666;
+    --nav-height: 80px;
+    --shadow-card: 0 8px 24px rgba(0,0,0,0.06);
+    --shadow-hover: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+.accent {
+    color: var(--gold);
+}
+
+.gold-text {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.hamburger {
+    display: none;
+    width: 32px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+    z-index: 5000;
+}
+
+.hamburger .line {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: all 0.35s ease;
+}
+
+.hamburger .line:nth-child(1) {
+    top: 0;
+}
+
+.hamburger .line:nth-child(2) {
+    top: 10px;
+}
+
+.hamburger .line:nth-child(3) {
+    top: 20px;
+}
+
+.hamburger.active .line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active .line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-overlay {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 3500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.45s cubic-bezier(0.77,0,0.175,1);
+    visibility: hidden;
+}
+
+.mobile-overlay.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+.mobile-nav-links {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
+
+.mobile-nav-links a {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    text-decoration: none;
+    color: var(--dark);
+    display: block;
+    margin: 20px 0;
+    transition: color 0.3s;
+}
+
+.mobile-nav-links a:hover {
+    color: var(--gold);
+}
+
+@media (max-width: 900px) {
+    .desktop-nav {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+}
+
+.inventory-hero {
+    padding-bottom: 40px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.1rem;
+    margin-top: 10px;
+}
+
+.inventory-hero p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
+.search-section {
+    padding: 0 7%;
+    position: relative;
+    z-index: 10;
+}
+
+.search-card {
+    background: #ffffff;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+    border-radius: 12px;
+    align-items: end;
+}
+
+.search-input label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 9px;
+    font-weight: 700;
+}
+
+.search-input input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.96rem;
+    transition: border-color 0.3s;
+}
+
+.search-input input:focus {
+    border-color: var(--gold);
+    outline: none;
+}
+
+.search-submit {
+    background: var(--dark);
+    color: white;
+    border: none;
+    padding: 15px 28px;
+    cursor: pointer;
+    border-radius: 6px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.3s;
+    align-self: end;
+    margin-top: 25px;
+}
+
+.search-submit:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+.payment-trust-bar {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding-top: 20px;
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+.payment-trust-bar span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+
+.payment-trust-bar span i {
+    color: #d4af37;
+    font-size: 1.1rem;
+}
+
+.payment-trust-bar span:hover {
+    color: #d4af37;
+}
+
+.inventory {
+    padding: 60px 7% 100px;
+    background: var(--gray);
+}
+
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 35px;
+}
+
+.car-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.car-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.car-card:hover img {
+    transform: scale(1.04);
+}
+
+.car-content {
+    padding: 24px 22px 28px;
+}
+
+.car-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    margin-bottom: 12px;
+}
+
+.car-price {
+    font-size: 1.7rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.car-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.car-footer span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.car-view-btn {
+    display: block;
+    text-align: center;
+    padding: 10px 26px;
+    background: var(--dark);
+    color: white;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 600;
+    transition: all 0.35s ease;
+}
+
+.car-view-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+}
+
+.price-container {
+    margin: 15px 0;
+    padding: 10px 0;
+    border-top: 1px solid #f5f5f5;
+}
+
+.retail-price {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.finance-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 4px;
+}
+
+.finance-price {
+    color: #d4af37;
+    font-weight: 600;
+}
+
+.main-footer {
+    background: var(--dark);
+    color: white;
+    padding: 90px 7% 40px;
+    text-align: center;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 55px;
+    margin-bottom: 50px;
+    justify-items: center;
+}
+
+.footer-about .logo {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+}
+
+.footer-grid h4 {
+    color: var(--gold);
+    margin-bottom: 25px;
+}
+
+.footer-grid ul {
+    list-style: none;
+}
+
+.footer-grid li {
+    margin-bottom: 12px;
+}
+
+.footer-grid a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.footer-grid a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    border-top: 1px solid #222;
+    padding-top: 30px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.newsletter-form {
+    display: flex;
+    margin-top: 24px;
+    max-width: 400px;
+    margin-inline: auto;
+}
+
+.newsletter-form input {
+    padding: 14px;
+    border: none;
+    border-radius: 6px 0 0 6px;
+    width: 100%;
+}
+
+.newsletter-form button {
+    background: var(--gold);
+    border: none;
+    padding: 0 20px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.auth-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 15, 15, 0.88);
+    backdrop-filter: blur(10px);
+    z-index: 5000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.auth-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.auth-modal {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 16px;
+    padding: 40px 32px;
+    position: relative;
+    max-height: 94vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: var(--dark);
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gold);
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.auth-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--gold);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+@media (max-width: 1024px) {
+    .hamburger {
+        display: block;
+    }
+    .desktop-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title h2 {
+        font-size: 2.5rem;
+    }
+    .search-card {
+        grid-template-columns: 1fr;
+    }
+    .car-grid {
+        grid-template-columns: 1fr;
+    }
+    .payment-trust-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .payment-trust-bar span {
+        font-size: 0.75rem;
+    }
+}
+
+@media (min-width: 900px) {
+    .search-card {
+        grid-template-columns: 1fr 1fr 1fr auto;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    .search-submit {
+        white-space: nowrap;
+        min-width: 180px;
+        margin-top: 0;
+    }
+    .payment-trust-bar {
+        gap: 32px;
+        font-size: 0.9rem;
+    }
+}

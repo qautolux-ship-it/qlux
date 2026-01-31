@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Q AutoLux Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<header class="dashboard-header">
+    <a href="index.html" class="back-btn" aria-label="Back to home"><i class="fas fa-arrow-left"></i></a>
+    <h2 id="pageTitle"></h2>
+    <button id="logoutBtn" class="logout-btn" aria-label="Log out"><i class="fas fa-sign-out-alt"></i></button>
+</header>
+
+<header class="dashboard-hero">
+  <div class="dashboard-hero-content">
+    <h1><span id="welcomeText"></span> <span class="accent" id="userName"></span></h1>
+    <p id="heroSubtitle"></p>
+  </div>
+</header>
+
+<main class="dashboard">
+
+  <section class="stats-overview">
+    <div class="mini-stat">
+      <span class="stat-label" id="labelStatSaved"></span>
+      <span class="stat-value" id="statSavedCount"></span>
+    </div>
+    <div class="mini-stat">
+      <span class="stat-label" id="labelStatApp"></span>
+      <span class="stat-value" id="statAppCount"></span>
+    </div>
+    <div class="mini-stat">
+      <span class="stat-label" id="labelStatMember"></span>
+      <span class="stat-value" id="statMemberLevel"></span>
+    </div>
+  </section>
+
+  <section class="dashboard-section profile-section">
+    <div class="section-title">
+      <span class="gold-text" id="sectionLabelAccount"></span>
+      <h2 id="sectionTitleAccount"></h2>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="profile-avatar" id="avatarContainer"></div>
+        <div class="profile-info">
+          <h3 id="profileName"></h3>
+          <p id="profileEmail"></p>
+        </div>
+      </div>
+
+      <div class="profile-details-grid">
+        <div class="detail-item">
+          <label id="labelLoc"></label>
+          <span id="profileLocation"></span>
+        </div>
+        <div class="detail-item">
+          <label id="labelCur"></label>
+          <span id="profileCurrency"></span>
+        </div>
+        <div class="detail-item">
+          <label id="labelPh"></label>
+          <span id="profilePhone"></span>
+        </div>
+        <div class="detail-item">
+          <label id="labelJoin"></label>
+          <span id="profileDate"></span>
+        </div>
+      </div>
+
+      <div class="profile-status-bar">
+        <span id="statusLabelWrap"><strong id="accountStatus"></strong></span>
+        <button id="editProfileBtn" class="btn-text-only"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-title">
+      <span class="gold-text" id="sectionLabelVehicles"></span>
+      <h2 id="sectionTitleVehicles"></h2>
+    </div>
+    <div class="car-grid" id="savedVehicles"></div>
+  </section>
+
+  <section class="dashboard-section">
+    <div class="section-title">
+      <span class="gold-text" id="sectionLabelFinance"></span>
+      <h2 id="sectionTitleFinance"></h2>
+    </div>
+    <div class="finance-list" id="financeList"></div>
+  </section>
+<!-- SECURITY SETTINGS -->
+<section class="dashboard-section">
+    <div class="section-title">
+        <span class="gold-text">Security</span>
+        <h2>Account Security</h2>
+    </div>
+
+    <div class="settings-card">
+        <div class="settings-item">
+            <div>
+                <strong>Password</strong>
+                <p>Change your account password</p>
+            </div>
+            <button class="btn-outline" id="changePasswordBtn">
+                Change
+            </button>
+        </div>
+
+        <div class="settings-item">
+            <div>
+                <strong>Email Verification</strong>
+                <p id="emailVerificationStatus">Checking status…</p>
+            </div>
+            <button class="btn-outline" id="verifyEmailBtn">
+                Verify
+            </button>
+        </div>
+
+        <div class="settings-item">
+            <div>
+                <strong>Last Login</strong>
+                <p id="lastLoginInfo">—</p>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h2 id="modalTitle">Edit Profile</h2>
+    <form id="editForm">
+      <div class="form-group">
+        <label for="editLocation">Location</label>
+        <input type="text" id="editLocation">
+      </div>
+      <div class="form-group">
+        <label for="editPhone">Phone Number</label>
+        <input type="tel" id="editPhone" placeholder="+1 800 000 0000">
+      </div>
+      <div class="form-group">
+        <label for="editCurrency">Preferred Currency (ISO code)</label>
+        <input type="text" id="editCurrency" placeholder="e.g. USD, EUR, NGN, GBP" maxlength="3">
+      </div>
+      <div style="margin-top:1.5rem;">
+        <button type="submit" class="btn-save" id="saveBtn">Save Changes</button>
+        <button type="button" id="cancelEdit" class="btn-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- DANGER ZONE -->
+<section class="dashboard-section danger-zone">
+    <div class="section-title">
+        <span class="gold-text">Danger Zone</span>
+        <h2>Delete Account</h2>
+    </div>
+
+    <div class="danger-card">
+        <p>
+            Deleting your account is permanent.  
+            All saved vehicles, applications, and profile data will be removed.
+        </p>
+
+        <button class="btn-danger" id="deleteAccountBtn">
+            Delete My Account
+        </button>
+    </div>
+</section>
+
+<nav class="bottom-tab-bar">
+  <a href="index.html" class="tab-item">
+    <i class="fas fa-home"></i>
+    <span id="navHome"></span>
+  </a>
+  <a href="#savedVehicles" class="tab-item">
+    <i class="fas fa-heart"></i>
+    <span id="navSaved"></span>
+  </a>
+  <a href="financing.html" class="tab-item">
+    <i class="fas fa-file-invoice-dollar"></i>
+    <span id="navFinance"></span>
+  </a>
+  <a href="dashboard.html" class="tab-item active">
+    <i class="fas fa-user"></i>
+    <span id="navProfile"></span>
+  </a>
+</nav>
+
+<script type="module" src="dashboard.js"></script>
+
+</body>
+</html>

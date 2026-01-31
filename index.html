@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q AutoLux | Premium Automotive Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Q <span class="accent">AUTOLUX</span></a>
+            
+            <ul class="nav-links desktop-nav" id="desktop-nav">
+                <li><a href="inventory.html">Inventory</a></li>
+                <li><a href="financing.html">Financing</a></li>
+                <li><a href="#">About</a></li>
+                <li class="auth-guest"><a href="#" class="signup-trigger">Sign Up</a></li>
+                <li class="auth-guest"><a href="#" class="login-trigger login-btn">Login</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" id="mobile-overlay">
+        <ul class="mobile-nav-links" id="mobile-nav-links">
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="financing.html">Financing</a></li>
+            <li><a href="#">About</a></li>
+            <li class="auth-guest"><a href="#" class="login-trigger">Login</a></li>
+            <li class="auth-guest"><a href="#" class="signup-trigger">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Defining <br><span class="accent">Automotive Luxury</span></h1>
+            <p>A curated collection of the world's most prestigious vehicles, delivered to your doorstep.</p>
+            <div class="hero-btns">
+                <a href="inventory.html" class="btn-gold">View Inventory</a>
+                <a href="financing.html" class="btn-outline">Finance Options</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="search-section">
+        <div class="search-card">
+            <div class="search-input">
+                <label>Make</label>
+                <input type="text" id="filterMake" placeholder="e.g. Ferrari">
+            </div>
+            <div class="search-input">
+                <label>Model</label>
+                <input type="text" id="filterModel" placeholder="e.g. SF90">
+            </div>
+            <div class="search-input">
+                <label>Budget</label>
+                <input type="number" id="filterBudget" placeholder="e.g. 250000">
+            </div>
+            <button class="search-submit" id="searchBtn">Search</button>
+        </div>
+    </section>
+
+    <main class="inventory" id="inventory">
+        <div class="section-title">
+            <span class="gold-text">Our Collection</span>
+            <h2>Featured Vehicles</h2>
+        </div>
+        <div class="car-grid" id="carGrid">
+            <div class="loader">Loading Excellence...</div>
+        </div>
+    </main>
+
+    <section class="trust-section">
+        <div class="section-title">
+            <span class="gold-text">The Gold Standard</span>
+            <h2>Why Buy From Q AutoLux</h2>
+        </div>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <i class="fas fa-check-circle"></i>
+                <h3>Verified Vehicles</h3>
+                <p>Every vehicle undergoes a rigorous multi-point inspection and vehicle history review.</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-shield-halved"></i>
+                <h3>Secure Payment</h3>
+                <p>Encrypted transaction protocols and escrow services for high-value acquisitions.</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-globe"></i>
+                <h3>Global Shipping</h3>
+                <p>Door-to-door white-glove delivery assistance to any destination worldwide.</p>
+            </div>
+            <div class="trust-item">
+                <i class="fas fa-hand-holding-dollar"></i>
+                <h3>Transparent Pricing</h3>
+                <p>No hidden dealer fees. Pure market-driven pricing for elite assets.</p>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:60px;">
+            <a href="#inventory" class="btn-gold">View Available Vehicles</a>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="section-title">
+            <span class="gold-text">The Q AutoLux Way</span>
+            <h2>Acquisition Process</h2>
+        </div>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">01</div>
+                <h4>Choose a Vehicle</h4>
+                <p>Browse our digital showroom and select your next performance masterpiece.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">02</div>
+                <h4>Transaction Path</h4>
+                <p>Choose between a direct wire transfer for full ownership or bespoke financing.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">03</div>
+                <h4>Paperwork</h4>
+                <p>Secure digital signing and verified payment processing for swift ownership transition.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">04</div>
+                <h4>Global Delivery</h4>
+                <p>Experience the thrill of arrival with white-glove delivery to your private gallery.</p>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:60px;">
+            <a href="inventory.html" class="btn-gold">Start Your Acquisition</a>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo">Q <span class="accent">AUTOLUX</span></div>
+                <p>The premier destination for luxury vehicle acquisition and specialized automotive financing.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#inventory">Inventory</a></li>
+                    <li><a href="#">Sell My Car</a></li>
+                    <li><a href="financing.html">Financing</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fa fa-envelope"></i> concierge@qautolux.com</p>
+                <p><i class="fa fa-phone"></i> +1 800-560-001</p>
+                <p><i class="fa fa-location-dot"></i> 5th Avenue, New York, NY</p>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Receive exclusive alerts on new arrivals.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Email Address">
+                    <button type="submit">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Q AutoLux. Designed for Excellence.</p>
+        </div>
+    </footer>
+
+    <div class="auth-modal-overlay" id="authModalOverlay">
+        <div class="auth-modal" id="authModal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+
+            <div class="modal-header">
+                <h2 id="modalTitle">Welcome to Q AutoLux</h2>
+                <p class="modal-subtitle">Access your exclusive account or join our private collection</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-gold auth-submit">Sign In</button>
+
+                <div class="social-divider">
+                    <span>or continue with</span>
+                </div>
+                <div class="social-buttons">
+                    <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                    <button type="button" class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
+                </div>
+            </form>
+
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="signupFullName">Full Name</label>
+                    <input type="text" id="signupFullName" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone">Phone Number</label>
+                    <input type="tel" id="signupPhone" required placeholder="+1 (555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Create Password</label>
+                    <input type="password" id="signupPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox">
+                        I would like to receive exclusive offers, new arrivals & concierge updates
+                    </label>
+                </div>
+                <button type="submit" class="btn-gold auth-submit">Create My Account</button>
+
+                <div class="social-divider">
+                    <span>or sign up with</span>
+                </div>
+                <div class="social-buttons">
+                    <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                    <button type="button" class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+</body>
+</html>

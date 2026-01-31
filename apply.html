@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Financing | Q AutoLux Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="apply.css">
+</head>
+<body>
+
+  <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Q <span class="accent">AUTOLUX</span></a>
+            
+            <ul class="nav-links" id="desktop-nav">
+                <li><a href="index.html#inventory">Inventory</a></li>
+                <li><a href="financing.html">Financing</a></li>
+                <li><a href="#">About</a></li>
+                <li class="auth-guest"><a href="#" class="signup-trigger">Sign Up</a></li>
+                <li class="auth-guest"><a href="#" class="login-trigger login-btn">Login</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" id="mobile-overlay">
+        <ul class="mobile-nav-links" id="mobile-nav-links">
+            <li><a href="index.html#inventory">Inventory</a></li>
+            <li><a href="financing.html">Financing</a></li>
+            <li><a href="#">About</a></li>
+            <li class="auth-guest"><a href="#" class="login-trigger">Login</a></li>
+            <li class="auth-guest"><a href="#" class="signup-trigger">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section class="apply-section">
+            <div class="section-title">
+                <span class="gold-text"><i class="fas fa-lock"></i> 256-Bit Encrypted Submission</span>
+                <h2>Bespoke Financing Application</h2>
+                <p>Global institutional-grade financing for luxury, exotic and premium vehicles. Provide detailed & accurate information for fastest review by our worldwide lending partners.</p>
+            </div>
+
+            <form class="fin-form" id="financeForm">
+
+                <div class="form-group-title">Personal Information</div>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Full Legal Name *</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Primary Email *</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Mobile Number (with country code) *</label>
+                        <input type="tel" id="phone" placeholder="+1 555 123 4567" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Date of Birth *</label>
+                        <input type="date" id="dob" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Nationality / Citizenship</label>
+                        <input type="text" id="nationality" placeholder="e.g. US, UK">
+                    </div>
+                </div>
+
+                <div class="form-group-title">Residential Address</div>
+                <div class="form-grid three-col">
+                    <div class="input-group">
+                        <label>Address Line 1 *</label>
+                        <input type="text" id="address1" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Address Line 2</label>
+                        <input type="text" id="address2">
+                    </div>
+                    <div class="input-group">
+                        <label>City *</label>
+                        <input type="text" id="city" required>
+                    </div>
+                    <div class="input-group">
+                        <label>State / Province / Region</label>
+                        <input type="text" id="state">
+                    </div>
+                    <div class="input-group">
+                        <label>Postal / ZIP Code</label>
+                        <input type="text" id="zip">
+                    </div>
+                    <div class="input-group">
+                        <label>Country of Residence *</label>
+                        <select id="country" required>
+                            <option value="" selected >Select Country</option>
+                            <option value="Afghanistan">Afghanistan</option>
+                            <option value="Albania">Albania</option>
+                            <option value="Algeria">Algeria</option>
+                            <option value="Andorra">Andorra</option>
+                            <option value="Angola">Angola</option>
+                            <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Armenia">Armenia</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Azerbaijan">Azerbaijan</option>
+                            <option value="Bahamas">Bahamas</option>
+                            <option value="Bahrain">Bahrain</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="Barbados">Barbados</option>
+                            <option value="Belarus">Belarus</option>
+                            <option value="Belgium">Belgium</option>
+                            <option value="Belize">Belize</option>
+                            <option value="Benin">Benin</option>
+                            <option value="Bhutan">Bhutan</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                            <option value="Botswana">Botswana</option>
+                            <option value="Brazil">Brazil</option>
+                            <option value="Brunei">Brunei</option>
+                            <option value="Bulgaria">Bulgaria</option>
+                            <option value="Burkina Faso">Burkina Faso</option>
+                            <option value="Burundi">Burundi</option>
+                            <option value="Cabo Verde">Cabo Verde</option>
+                            <option value="Cambodia">Cambodia</option>
+                            <option value="Cameroon">Cameroon</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Central African Republic">Central African Republic</option>
+                            <option value="Chad">Chad</option>
+                            <option value="Chile">Chile</option>
+                            <option value="China">China</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Comoros">Comoros</option>
+                            <option value="Congo (Congo-Brazzaville)">Congo (Congo-Brazzaville)</option>
+                            <option value="Costa Rica">Costa Rica</option>
+                            <option value="Croatia">Croatia</option>
+                            <option value="Cuba">Cuba</option>
+                            <option value="Cyprus">Cyprus</option>
+                            <option value="Czechia (Czech Republic)">Czechia (Czech Republic)</option>
+                            <option value="Democratic Republic of the Congo">Democratic Republic of the Congo</option>
+                            <option value="Denmark">Denmark</option>
+                            <option value="Djibouti">Djibouti</option>
+                            <option value="Dominica">Dominica</option>
+                            <option value="Dominican Republic">Dominican Republic</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="Egypt">Egypt</option>
+                            <option value="El Salvador">El Salvador</option>
+                            <option value="Equatorial Guinea">Equatorial Guinea</option>
+                            <option value="Eritrea">Eritrea</option>
+                            <option value="Estonia">Estonia</option>
+                            <option value="Eswatini (fmr. Swaziland)">Eswatini (fmr. Swaziland)</option>
+                            <option value="Ethiopia">Ethiopia</option>
+                            <option value="Fiji">Fiji</option>
+                            <option value="Finland">Finland</option>
+                            <option value="France">France</option>
+                            <option value="Gabon">Gabon</option>
+                            <option value="Gambia">Gambia</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Germany">Germany</option>
+                            <option value="Ghana">Ghana</option>
+                            <option value="Greece">Greece</option>
+                            <option value="Grenada">Grenada</option>
+                            <option value="Guatemala">Guatemala</option>
+                            <option value="Guinea">Guinea</option>
+                            <option value="Guinea-Bissau">Guinea-Bissau</option>
+                            <option value="Guyana">Guyana</option>
+                            <option value="Haiti">Haiti</option>
+                            <option value="Honduras">Honduras</option>
+                            <option value="Hungary">Hungary</option>
+                            <option value="Iceland">Iceland</option>
+                            <option value="India">India</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Iran">Iran</option>
+                            <option value="Iraq">Iraq</option>
+                            <option value="Ireland">Ireland</option>
+                            <option value="Israel">Israel</option>
+                            <option value="Italy">Italy</option>
+                            <option value="Jamaica">Jamaica</option>
+                            <option value="Japan">Japan</option>
+                            <option value="Jordan">Jordan</option>
+                            <option value="Kazakhstan">Kazakhstan</option>
+                            <option value="Kenya">Kenya</option>
+                            <option value="Kiribati">Kiribati</option>
+                            <option value="Kuwait">Kuwait</option>
+                            <option value="Kyrgyzstan">Kyrgyzstan</option>
+                            <option value="Laos">Laos</option>
+                            <option value="Latvia">Latvia</option>
+                            <option value="Lebanon">Lebanon</option>
+                            <option value="Lesotho">Lesotho</option>
+                            <option value="Liberia">Liberia</option>
+                            <option value="Libya">Libya</option>
+                            <option value="Liechtenstein">Liechtenstein</option>
+                            <option value="Lithuania">Lithuania</option>
+                            <option value="Luxembourg">Luxembourg</option>
+                            <option value="Madagascar">Madagascar</option>
+                            <option value="Malawi">Malawi</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Maldives">Maldives</option>
+                            <option value="Mali">Mali</option>
+                            <option value="Malta">Malta</option>
+                            <option value="Marshall Islands">Marshall Islands</option>
+                            <option value="Mauritania">Mauritania</option>
+                            <option value="Mauritius">Mauritius</option>
+                            <option value="Mexico">Mexico</option>
+                            <option value="Micronesia">Micronesia</option>
+                            <option value="Moldova">Moldova</option>
+                            <option value="Monaco">Monaco</option>
+                            <option value="Mongolia">Mongolia</option>
+                            <option value="Montenegro">Montenegro</option>
+                            <option value="Morocco">Morocco</option>
+                            <option value="Mozambique">Mozambique</option>
+                            <option value="Myanmar (formerly Burma)">Myanmar (formerly Burma)</option>
+                            <option value="Namibia">Namibia</option>
+                            <option value="Nauru">Nauru</option>
+                            <option value="Nepal">Nepal</option>
+                            <option value="Netherlands">Netherlands</option>
+                            <option value="New Zealand">New Zealand</option>
+                            <option value="Nicaragua">Nicaragua</option>
+                            <option value="Niger">Niger</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="North Korea">North Korea</option>
+                            <option value="North Macedonia">North Macedonia</option>
+                            <option value="Norway">Norway</option>
+                            <option value="Oman">Oman</option>
+                            <option value="Pakistan">Pakistan</option>
+                            <option value="Palau">Palau</option>
+                            <option value="Palestine State">Palestine State</option>
+                            <option value="Panama">Panama</option>
+                            <option value="Papua New Guinea">Papua New Guinea</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Peru">Peru</option>
+                            <option value="Philippines">Philippines</option>
+                            <option value="Poland">Poland</option>
+                            <option value="Portugal">Portugal</option>
+                            <option value="Qatar">Qatar</option>
+                            <option value="Romania">Romania</option>
+                            <option value="Russia">Russia</option>
+                            <option value="Rwanda">Rwanda</option>
+                            <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                            <option value="Saint Lucia">Saint Lucia</option>
+                            <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                            <option value="Samoa">Samoa</option>
+                            <option value="San Marino">San Marino</option>
+                            <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                            <option value="Saudi Arabia">Saudi Arabia</option>
+                            <option value="Senegal">Senegal</option>
+                            <option value="Serbia">Serbia</option>
+                            <option value="Seychelles">Seychelles</option>
+                            <option value="Sierra Leone">Sierra Leone</option>
+                            <option value="Singapore">Singapore</option>
+                            <option value="Slovakia">Slovakia</option>
+                            <option value="Slovenia">Slovenia</option>
+                            <option value="Solomon Islands">Solomon Islands</option>
+                            <option value="Somalia">Somalia</option>
+                            <option value="South Africa">South Africa</option>
+                            <option value="South Korea">South Korea</option>
+                            <option value="South Sudan">South Sudan</option>
+                            <option value="Spain">Spain</option>
+                            <option value="Sri Lanka">Sri Lanka</option>
+                            <option value="Sudan">Sudan</option>
+                            <option value="Suriname">Suriname</option>
+                            <option value="Sweden">Sweden</option>
+                            <option value="Switzerland">Switzerland</option>
+                            <option value="Syria">Syria</option>
+                            <option value="Taiwan">Taiwan</option>
+                            <option value="Tajikistan">Tajikistan</option>
+                            <option value="Tanzania">Tanzania</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Timor-Leste">Timor-Leste</option>
+                            <option value="Togo">Togo</option>
+                            <option value="Tonga">Tonga</option>
+                            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                            <option value="Tunisia">Tunisia</option>
+                            <option value="Turkey">Turkey</option>
+                            <option value="Turkmenistan">Turkmenistan</option>
+                            <option value="Tuvalu">Tuvalu</option>
+                            <option value="Uganda">Uganda</option>
+                            <option value="Ukraine">Ukraine</option>
+                            <option value="United Arab Emirates">United Arab Emirates</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="United States of America">United States of America</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Uzbekistan">Uzbekistan</option>
+                            <option value="Vanuatu">Vanuatu</option>
+                            <option value="Vatican City">Vatican City</option>
+                            <option value="Venezuela">Venezuela</option>
+                            <option value="Vietnam">Vietnam</option>
+                            <option value="Yemen">Yemen</option>
+                            <option value="Zambia">Zambia</option>
+                            <option value="Zimbabwe">Zimbabwe</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group-title">Financial Profile</div>
+                <div class="form-grid three-col">
+                    <div class="input-group">
+                        <label>Estimated Net Worth (USD) *</label>
+                        <input type="number" id="netWorth" min="0" required placeholder="2500000">
+                    </div>
+                    <div class="input-group">
+                        <label>Verified Annual Income (USD) *</label>
+                        <input type="number" id="income" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Liquid Assets / Cash (USD)</label>
+                        <input type="number" id="liquidAssets" min="0" placeholder="500000">
+                    </div>
+                    <div class="input-group">
+                        <label>Primary Source of Wealth</label>
+                        <select id="wealthSource">
+                            <option value="">Select</option>
+                            <option value="Business Ownership">Business Ownership</option>
+                            <option value="Employment Salary">Employment / Executive Position</option>
+                            <option value="Investments">Investment Income / Dividends</option>
+                            <option value="Inheritance">Inheritance / Family Wealth</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Monthly Debt Payments (USD)</label>
+                        <input type="number" id="monthlyDebt" min="0" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label>Credit Profile (self-reported)</label>
+                        <select id="creditProfile">
+                            <option value="">Select</option>
+                            <option value="Excellent">Excellent (760+ or equivalent)</option>
+                            <option value="Good">Good (700–759)</option>
+                            <option value="Fair">Fair (650–699)</option>
+                            <option value="No US Credit">No US Credit History (International)</option>
+                            <option value="Prefer not to say">Prefer not to disclose</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group-title">Employment / Business</div>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Employer / Company Name</label>
+                        <input type="text" id="employer">
+                    </div>
+                    <div class="input-group">
+                        <label>Occupation / Position</label>
+                        <input type="text" id="occupation">
+                    </div>
+                    <div class="input-group">
+                        <label>Years in Current Role / Business</label>
+                        <input type="number" id="yearsEmployed" min="0" placeholder="8">
+                    </div>
+                </div>
+
+                <div class="form-group-title">Vehicle & Financing Details</div>
+                <div class="form-grid three-col">
+                    <div class="input-group">
+                        <label>Vehicle Make & Model *</label>
+                        <input type="text" id="vehicle" placeholder="e.g. Rolls-Royce Cullinan, Ferrari SF90" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Model Year *</label>
+                        <input type="number" id="vehicleYear" min="2000" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Purchase Price (USD) *</label>
+                        <input type="number" id="vehiclePrice" min="50000" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Country of Registration / Use *</label>
+                        <select id="vehicleCountry" required>
+                            <option value="">Select Country</option>
+                            <option value="Nigeria">Nigeria</option>
+                            <option value="United States">United States</option>
+                            <option value="United Arab Emirates">United Arab Emirates</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="Canada">Canada</option>
+                            <option value="Saudi Arabia">Saudi Arabia</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Intended Down Payment</label>
+                        <input type="text" id="downPayment" placeholder="35% or $150,000">
+                    </div>
+                    <div class="input-group">
+                        <label>Preferred Loan Term</label>
+                        <select id="loanTerm">
+                            <option value="">Select</option>
+                            <option value="36">36 months</option>
+                            <option value="48">48 months</option>
+                            <option value="60">60 months</option>
+                            <option value="72">72 months</option>
+                            <option value="84">84 months</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group-title">Supporting Documents</div>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Proof of Identity (Passport/ID)</label>
+                        <input type="file" id="idUpload" accept="image/*,.pdf">
+                    </div>
+                    <div class="input-group">
+                        <label>Proof of Income / Statements</label>
+                        <input type="file" id="incomeUpload" accept="image/*,.pdf">
+                    </div>
+                    <div class="input-group">
+                        <label>Other Documents (optional)</label>
+                        <input type="file" id="otherUpload" accept="image/*,.pdf" multiple>
+                    </div>
+                </div>
+
+                <div class="consent-box">
+                    <label>
+                        <input type="checkbox" id="agreePrivacy" required>
+                        I consent to Q AutoLux collecting my data per the <a href="#">Privacy Policy</a>.
+                    </label>
+                </div>
+
+                <div class="consent-box">
+                    <label>
+                        <input type="checkbox" id="agreeVerification" required>
+                        I authorize Q AutoLux to verify information and obtain credit reports.
+                    </label>
+                </div>
+
+                <button type="submit" class="search-submit">Submit Secure Application</button>
+            </form>
+        </section>
+    </main>
+
+     <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo">Q <span class="accent">AUTOLUX</span></div>
+                <p>The premier destination for luxury vehicle acquisition and specialized automotive financing.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#inventory">Inventory</a></li>
+                    <li><a href="#">Sell My Car</a></li>
+                    <li><a href="financing.html">Financing</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fa fa-envelope"></i> concierge@qautolux.com</p>
+                <p><i class="fa fa-phone"></i> +1 800-560-001</p>
+                <p><i class="fa fa-location-dot"></i> 5th Avenue, New York, NY</p>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Receive exclusive alerts on new arrivals.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Email Address">
+                    <button type="submit">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Q AutoLux. Designed for Excellence.</p>
+        </div>
+    </footer>
+
+    <div class="auth-modal-overlay" id="authModalOverlay">
+        <div class="auth-modal" id="authModal">
+            <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+
+            <div class="modal-header">
+                <h2 id="modalTitle">Welcome to Q AutoLux</h2>
+                <p class="modal-subtitle">Access your exclusive account or join our private collection</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn-gold auth-submit">Sign In</button>
+
+                <div class="social-divider">
+                    <span>or continue with</span>
+                </div>
+                <div class="social-buttons">
+                    <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                    <button type="button" class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
+                </div>
+            </form>
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="signupFullName">Full Name</label>
+                    <input type="text" id="signupFullName" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email Address</label>
+                    <input type="email" id="signupEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone">Phone Number</label>
+                    <input type="tel" id="signupPhone" required placeholder="+1 (555) 123-4567">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Create Password</label>
+                    <input type="password" id="signupPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" required>
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    </label>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox">
+                        I would like to receive exclusive offers, new arrivals & concierge updates
+                    </label>
+                </div>
+                <button type="submit" class="btn-gold auth-submit">Create My Account</button>
+
+                <div class="social-divider">
+                    <span>or sign up with</span>
+                </div>
+                <div class="social-buttons">
+                    <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                    <button type="button" class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="financing.js"></script>
+</body>
+</html>

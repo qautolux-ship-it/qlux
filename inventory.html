@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Collection | Q AutoLux Inventory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="inventory.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Q <span class="accent">AUTOLUX</span></a>
+            
+            <ul class="nav-links desktop-nav" id="desktop-nav">
+                <li><a href="inventory.html" class="active">Inventory</a></li>
+                <li><a href="financing.html">Financing</a></li>
+                <li><a href="#">About</a></li>
+                <li class="auth-guest"><a href="#" class="signup-trigger">Sign Up</a></li>
+                <li class="auth-guest"><a href="#" class="login-trigger login-btn">Login</a></li>
+            </ul>
+
+            <div class="hamburger" id="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-overlay" id="mobile-overlay">
+        <ul class="mobile-nav-links" id="mobile-nav-links">
+            <li><a href="inventory.html">Inventory</a></li>
+            <li><a href="financing.html">Financing</a></li>
+            <li><a href="#">About</a></li>
+            <li class="auth-guest"><a href="#" class="login-trigger">Login</a></li>
+            <li class="auth-guest"><a href="#" class="signup-trigger">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <header class="inventory-hero" style="padding-top: 140px; background: var(--white); text-align: center;">
+        <div class="section-title">
+            <span class="gold-text">Private Collection</span>
+            <h2>Luxury Acquisition</h2> 
+            <p style="color: #666; max-width: 600px; margin: 10px auto;">Secure card payments, wire transfers, and bespoke financing available on all assets.</p>
+        </div>
+    </header>
+
+    <section class="search-section" style="margin-top: 0; padding-bottom: 50px;">
+        <div class="search-card">
+            <div class="search-input">
+                <label>Make</label>
+                <input type="text" id="filterMake" placeholder="e.g. Lamborghini">
+            </div>
+            <div class="search-input">
+                <label>Model</label>
+                <input type="text" id="filterModel" placeholder="e.g. Revuelto">
+            </div>
+            <div class="search-input">
+                <label>Acquisition Budget (USD)</label>
+                <input type="number" id="filterBudget" placeholder="Max Purchase Price">
+            </div>
+            <button class="search-submit" id="searchBtn">Update Search</button>
+            
+            <div class="payment-trust-bar" style="margin-top: 20px; display: flex; justify-content: center; gap: 20px; color: #999; font-size: 0.8rem;">
+                <span><i class="fab fa-cc-visa"></i> Visa</span>
+                <span><i class="fab fa-cc-mastercard"></i> Mastercard</span>
+                <span><i class="fas fa-university"></i> Wire Transfer</span>
+                <span><i class="fas fa-shield-alt"></i> Secure Escrow</span>
+            </div>
+        </div>
+    </section>
+
+    <main class="inventory" id="inventory" style="padding-top: 20px; min-height: 60vh;">
+        <div class="car-grid" id="carGrid">
+            <div class="loader">Accessing Database...</div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-about">
+                <div class="logo">Q <span class="accent">AUTOLUX</span></div>
+                <p>The premier destination for luxury vehicle acquisition and specialized automotive financing.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="inventory.html">Inventory</a></li>
+                    <li><a href="#">Sell My Car</a></li>
+                    <li><a href="financing.html">Financing</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p><i class="fa fa-envelope"></i> concierge@qautolux.com</p>
+                <p><i class="fa fa-phone"></i> +1 800-560-001</p>
+                <p><i class="fa fa-location-dot"></i> 5th Avenue, New York, NY</p>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Newsletter</h4>
+                <p>Receive exclusive alerts on new arrivals.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Email Address">
+                    <button type="submit">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Q AutoLux. Designed for Excellence.</p>
+        </div>
+    </footer>
+
+    <div class="auth-modal-overlay" id="authModalOverlay">
+        <div class="auth-modal" id="authModal">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Welcome to Q AutoLux</h2>
+                <p class="modal-subtitle">Login to your concierge dashboard</p>
+            </div>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Login</button>
+                <button class="tab-btn" data-tab="signup">Sign Up</button>
+            </div>
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" required placeholder="concierge@qautolux.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-gold auth-submit">Sign In</button>
+                <div class="social-divider"><span>or</span></div>
+                <div class="social-buttons">
+                    <button type="button" class="social-btn google"><i class="fab fa-google"></i> Google</button>
+                </div>
+            </form>
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupFullName" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="signupEmail" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="signupPhone" required placeholder="+1 234 567 890">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" required placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-gold auth-submit">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="inventory.js"></script>
+</body>
+</html>
