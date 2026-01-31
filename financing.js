@@ -1,14 +1,23 @@
-import { app, db, auth, storage, googleProvider } from "./firebase.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore, collection, getDocs, addDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 
-import { collection, getDocs, addDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  onAuthStateChanged,
-  signOut
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyDp1xll_VkiCQcJhxkMa7ggYpfgAbZFXds",
+  authDomain: "q-autolux.firebaseapp.com",
+  projectId: "q-autolux",
+  storageBucket: "q-autolux.firebasestorage.app",
+  messagingSenderId: "958237455585",
+  appId: "1:958237455585:web:7f8eb1848dd7de8fe0b3a0",
+  measurementId: "G-WTET9LS8G6"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+const googleProvider = new GoogleAuthProvider();
 
 document.addEventListener('DOMContentLoaded', async () => {
 
@@ -200,6 +209,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       submitBtn.textContent = "Uploading Secure Documents...";
 
       try {
+
         const idFile = document.getElementById('idUpload')?.files[0];
         const incomeFile = document.getElementById('incomeUpload')?.files[0];
         let idUrl = null;
@@ -264,6 +274,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
   }
+
   document.querySelectorAll('.login-trigger').forEach(el => {
     el.addEventListener('click', e => { e.preventDefault(); openModal('login'); });
   });
@@ -294,7 +305,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
       try {
         const cred = await createUserWithEmailAndPassword(auth, email, password);
-      
+
         await setDoc(doc(db, "users", cred.user.uid), {
           fullName: fullName,
           email: email,

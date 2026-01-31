@@ -1,5 +1,4 @@
-import { app, db, auth, googleProvider } from "./firebase.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { 
   collection, 
   getDocs, 
@@ -19,11 +18,20 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-const firebaseConfig = undefined;
+const firebaseConfig = {
+  apiKey: "AIzaSyDp1xll_VkiCQcJhxkMa7ggYpfgAbZFXds",
+  authDomain: "q-autolux.firebaseapp.com",
+  projectId: "q-autolux",
+  storageBucket: "q-autolux.firebasestorage.app",
+  messagingSenderId: "958237455585",
+  appId: "1:958237455585:web:7f8eb1848dd7de8fe0b3a0",
+  measurementId: "G-WTET9LS8G6"
+};
 
-const appInstance = app;
-const dbInstance = db;
-const authInstance = auth;
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
 async function getDisplayCurrency() {
   const user = auth.currentUser;
   if (user) {
@@ -225,33 +233,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- REFINED NAVBAR UPDATE LOGIC ---
   function updateNavbar(user) {
     const guestItems = document.querySelectorAll(".auth-guest");
     const desktopNav = document.getElementById("desktop-nav");
     const mobileNavList = document.getElementById("mobile-nav-links");
 
-    // Toggle Guest Links
     guestItems.forEach(item => {
       item.style.display = user ? "none" : "block";
     });
 
-    // Cleanup old dynamic links to prevent double buttons
     document.querySelectorAll(".dynamic-auth-item").forEach(el => el.remove());
 
     if (user) {
       const dashboardLink = `<li class="dynamic-auth-item"><a href="dashboard.html">Dashboard</a></li>`;
       const logoutLink = `<li class="dynamic-auth-item"><a href="#" class="logout-trigger" style="color:#ff4444 !important;">Logout</a></li>`;
 
-      // Inject to Desktop
       desktopNav.insertAdjacentHTML('beforeend', dashboardLink);
       desktopNav.insertAdjacentHTML('beforeend', logoutLink);
 
-      // Inject to Mobile
       mobileNavList.insertAdjacentHTML('beforeend', dashboardLink);
       mobileNavList.insertAdjacentHTML('beforeend', logoutLink);
 
-      // Re-attach Logout Event
       document.querySelectorAll(".logout-trigger").forEach(btn => {
         btn.onclick = async (e) => {
           e.preventDefault();

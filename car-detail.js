@@ -1,11 +1,24 @@
-import { app, db, auth } from "./firebase.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { 
-    doc, getDoc, setDoc, collection, addDoc, query, where, getDocs 
+    getFirestore, doc, getDoc, setDoc, collection, addDoc, query, where, getDocs 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { 
-    onAuthStateChanged, signOut 
+    getAuth, onAuthStateChanged, signOut 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDp1xll_VkiCQcJhxkMa7ggYpfgAbZFXds",
+    authDomain: "q-autolux.firebaseapp.com",
+    projectId: "q-autolux",
+    storageBucket: "q-autolux.firebasestorage.app",
+    messagingSenderId: "958237455585",
+    appId: "1:958237455585:web:7f8eb1848dd7de8fe0b3a0",
+    measurementId: "G-WTET9LS8G6"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 async function getDisplayCurrency() {
     const user = auth.currentUser;
@@ -76,6 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 priceHTML += `<div style="color: #d4af37; font-weight: 600; font-size: 1.1rem; margin-top: 5px;">
                                 Est. ${formatPrice(car.monthly, currency)}/mo
                               </div>`;
+
                 financeBtn.style.display = 'block';
                 financeBtn.href = `financing.html?id=${id}`;
             } else {
