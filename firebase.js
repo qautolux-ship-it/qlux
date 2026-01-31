@@ -1,21 +1,21 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID",
+  apiKey: "AIzaSyDp1xll_VkiCQcJhxkMa7ggYpfgAbZFXds",
+  authDomain: "q-autolux.firebaseapp.com",
+  projectId: "q-autolux",
+  storageBucket: "q-autolux.firebasestorage.app",
+  messagingSenderId: "958237455585",
+  appId: "1:958237455585:web:7f8eb1848dd7de8fe0b3a0",
+  measurementId: "G-WTET9LS8G6"
 };
 
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const db = getFirestore(app);
+const analytics = typeof window !== "undefined" ? getAnalytics(app) : null;
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-export { app, analytics, db, auth };
+export { app, analytics, auth, db };
