@@ -34,6 +34,97 @@
     color: var(--gold);
 }
 
+/* ✅ BONUS SECTION STYLES FOR CAR DETAILS PAGE */
+.detail-bonus-section {
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.detail-bonus-card {
+    background: linear-gradient(135deg, #f8f5f0 0%, #ffffff 100%);
+    border: 2px solid #d4af37;
+    border-radius: 12px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+    transition: all 0.3s ease;
+}
+
+.detail-bonus-card:hover {
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+    transform: translateY(-2px);
+}
+
+.bonus-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #d4af37 0%, #f2d16b 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.bonus-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bonus-content p {
+    margin: 0;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.bonus-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #d4af37;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bonus-btn:hover {
+    background: #c19b2e;
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    .detail-bonus-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .bonus-icon {
+        margin: 0 auto;
+    }
+
+    .bonus-content {
+        align-items: center;
+    }
+
+    .bonus-btn {
+        align-self: center;
+    }
+}
+
 .detail-grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
@@ -59,15 +150,17 @@
 
 .thumbnail-row {
     display: flex;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 20px;
-    overflow-x: auto;
+    justify-content: flex-start;
+    overflow: hidden;
     padding-bottom: 10px;
 }
 
 .thumbnail-row img {
-    width: 100px;
-    height: 70px;
+    width: calc(33.333% - 10px);
+    height: 80px;
     object-fit: cover;
     border-radius: 4px;
     cursor: pointer;
@@ -233,5 +326,24 @@
 
     .action-buttons {
         padding: 15px;
+    }
+
+    .thumbnail-row img {
+        width: calc(33.333% - 8px);
+        height: 70px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    .thumbnail-row img {
+        width: calc(25% - 10px);
+        height: 80px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .thumbnail-row img {
+        width: 100px;
+        height: 70px;
     }
 }

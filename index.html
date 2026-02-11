@@ -42,11 +42,16 @@
 
     <header class="hero">
         <div class="hero-content">
-            <h1>Defining <br><span class="accent">Automotive Luxury</span></h1>
+            <h1><span class="accent">Automotive Luxury</span></h1>
             <p>A curated collection of the world's most prestigious vehicles, delivered to your doorstep.</p>
             <div class="hero-btns">
                 <a href="inventory.html" class="btn-gold">View Inventory</a>
                 <a href="financing.html" class="btn-outline">Finance Options</a>
+            </div>
+            
+            <div id="frontBonus" class="front-bonus" style="display:none;">
+                <p id="frontBonusText"></p>
+                <a id="frontBonusAction" class="btn-outline bonus-cta"></a>
             </div>
         </div>
     </header>
@@ -62,8 +67,8 @@
                 <input type="text" id="filterModel" placeholder="e.g. SF90">
             </div>
             <div class="search-input">
-                <label>Budget</label>
-                <input type="number" id="filterBudget" placeholder="e.g. 250000">
+                <label>Max Budget</label>
+                <input type="number" id="filterBudget" placeholder="Loading...">
             </div>
             <button class="search-submit" id="searchBtn">Search</button>
         </div>
@@ -142,44 +147,59 @@
             <a href="inventory.html" class="btn-gold">Start Your Acquisition</a>
         </div>
     </section>
+     <footer class="main-footer">
+    <div class="footer-grid">
+        <div class="footer-about">
+            <div class="logo">Q <span class="accent">AUTOLUX</span></div>
+            <p>The premier destination for luxury vehicle acquisition and specialized automotive financing.</p>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
 
-    <footer class="main-footer">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <div class="logo">Q <span class="accent">AUTOLUX</span></div>
-                <p>The premier destination for luxury vehicle acquisition and specialized automotive financing.</p>
-                <div class="footer-socials">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-x-twitter"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="#inventory">Inventory</a></li>
-                    <li><a href="financing.html">Financing</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4>Contact</h4>
-                <p><i class="fa fa-envelope"></i> concierge@qautolux.com</p>
-                <p><i class="fa fa-phone"></i> +1 800-560-001</p>
-                <p><i class="fa fa-location-dot"></i> 5th Avenue, New York, NY</p>
-            </div>
-            <div class="footer-newsletter">
-                <h4>Newsletter</h4>
-                <p>Receive exclusive alerts on new arrivals.</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="Email Address">
-                    <button type="submit">Join</button>
-                </div>
+        <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms & Conditions</a></li>
+                <li><a href="refund.html">Refund Policy</a></li>
+                <li><a href="financing-disclosure.html">Financing Disclosure</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <p><i class="fa fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f6959998959f93849193b687978382999a838ed895999b">[email&#160;protected]</a></p>
+            <p><i class="fa fa-phone"></i> +1 800-LUX-001</p>
+            <p><i class="fa fa-location-dot"></i> 5th Avenue, New York, NY</p>
+        </div>
+
+        <div class="footer-newsletter">
+            <h4>Newsletter</h4>
+            <p>Receive exclusive alerts on new arrivals.</p>
+            <div class="newsletter-form">
+                <input type="email" placeholder="Email Address">
+                <button type="submit">Join</button>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Q AutoLux. Designed for Excellence.</p>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="footer-payments">
+            <img src="visa.png" alt="Visa">
+            <img src="mastercard.png" alt="Mastercard">
+            <img src="amex.png" alt="American Express">
+            <img src="paypal.png" alt="PayPal">
+            <img src="apple-pay.png" alt="Apple Pay">
+            <img src="google-pay.png" alt="Google Pay">
+            <img src="wire.png" alt="Bank Transfer">
+              <img src="bank-transfer.png" alt="Wire Transfer">
         </div>
-    </footer>
+        <p>© 2026 Q AutoLux. Secure & Encrypted Transactions.</p>
+    </div>
+</footer>
 
     <div class="auth-modal-overlay" id="authModalOverlay">
         <div class="auth-modal" id="authModal">
@@ -202,7 +222,12 @@
                 </div>
                 <div class="form-group">
                     <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="loginPassword" required placeholder="••••••••" autocomplete="current-password">
+                        <button type="button" class="password-toggle" data-target="loginPassword" tabindex="-1">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="form-options">
                     <label class="remember-me">
@@ -224,7 +249,7 @@
             <form id="signupForm" class="auth-form">
                 <div class="form-group">
                     <label for="signupFullName">Full Name</label>
-                    <input type="text" id="signupFullName" required placeholder="John Doe">
+                    <input type="text" id="signupFullName" required placeholder="John Doe" minlength="2">
                 </div>
                 <div class="form-group">
                     <label for="signupEmail">Email Address</label>
@@ -233,14 +258,54 @@
                 <div class="form-group">
                     <label for="signupPhone">Phone Number</label>
                     <input type="tel" id="signupPhone" required placeholder="+1 (555) 123-4567">
+                    <small class="input-helper">Include country code (e.g., +1 for US, +44 for UK)</small>
                 </div>
                 <div class="form-group">
                     <label for="signupPassword">Create Password</label>
-                    <input type="password" id="signupPassword" required placeholder="••••••••">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="signupPassword" required placeholder="••••••••" autocomplete="new-password">
+                        <button type="button" class="password-toggle" data-target="signupPassword" tabindex="-1">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="password-requirements" id="passwordRequirements" style="display:none;">
+                        <p class="requirements-title">Password must contain:</p>
+                        <div class="requirement" id="req-length">
+                            <i class="fas fa-circle"></i>
+                            <span>At least 8 characters</span>
+                        </div>
+                        <div class="requirement" id="req-uppercase">
+                            <i class="fas fa-circle"></i>
+                            <span>One uppercase letter (A-Z)</span>
+                        </div>
+                        <div class="requirement" id="req-lowercase">
+                            <i class="fas fa-circle"></i>
+                            <span>One lowercase letter (a-z)</span>
+                        </div>
+                        <div class="requirement" id="req-number">
+                            <i class="fas fa-circle"></i>
+                            <span>One number (0-9)</span>
+                        </div>
+                        <div class="requirement" id="req-special">
+                            <i class="fas fa-circle"></i>
+                            <span>One special character (@$!%*?&#)</span>
+                        </div>
+                    </div>
+                    <div class="password-strength" id="passwordStrength" style="display:none;">
+                        <div class="strength-bar">
+                            <div class="strength-fill" id="strengthFill"></div>
+                        </div>
+                        <span class="strength-text" id="strengthText">Password strength</span>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="signupConfirmPassword">Confirm Password</label>
-                    <input type="password" id="signupConfirmPassword" required placeholder="••••••••">
+                    <div class="password-input-wrapper">
+                        <input type="password" id="signupConfirmPassword" required placeholder="••••••••" autocomplete="new-password">
+                        <button type="button" class="password-toggle" data-target="signupConfirmPassword" tabindex="-1">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="form-group checkbox-group">
                     <label>
@@ -267,6 +332,41 @@
         </div>
     </div>
 
-    <script type="module" src="index.js"></script>
+    <div class="verification-modal" id="verificationModal">
+        <div class="verification-content">
+            <div class="verification-icon">
+                <i class="fas fa-envelope-circle-check"></i>
+            </div>
+            <h2>Verify Your Email</h2>
+            <p class="verification-message">We've sent a verification link to:</p>
+            <p class="verification-email" id="verificationEmail"></p>
+            <div class="verification-steps">
+                <div class="step-item">
+                    <i class="fas fa-1"></i>
+                    <span>Check your inbox (and spam folder)</span>
+                </div>
+                <div class="step-item">
+                    <i class="fas fa-2"></i>
+                    <span>Click the verification link</span>
+                </div>
+                <div class="step-item">
+                    <i class="fas fa-3"></i>
+                    <span>Return here to login</span>
+                </div>
+            </div>
+            <button class="btn-gold" id="closeVerificationModal">Got It</button>
+            <p class="resend-text">Didn't receive the email? Check spam folder or contact support</p>
+        </div>
+    </div>
+
+<div id="loader">
+    <div class="loader-content">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+</div>
+
+<script type="module" src="index.js"></script>
+
 </body>
 </html>

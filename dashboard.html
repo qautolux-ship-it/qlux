@@ -25,21 +25,54 @@
 
 <main class="dashboard">
 
+  <!-- QUICK STATS OVERVIEW -->
   <section class="stats-overview">
     <div class="mini-stat">
       <span class="stat-label" id="labelStatSaved"></span>
-      <span class="stat-value" id="statSavedCount"></span>
+      <span class="stat-value" id="statSavedCount">0</span>
+    </div>
+    <div class="mini-stat">
+      <span class="stat-label" id="labelStatPurchases"></span>
+      <span class="stat-value" id="statPurchasesCount">0</span>
     </div>
     <div class="mini-stat">
       <span class="stat-label" id="labelStatApp"></span>
-      <span class="stat-value" id="statAppCount"></span>
+      <span class="stat-value" id="statAppCount">0</span>
     </div>
     <div class="mini-stat">
       <span class="stat-label" id="labelStatMember"></span>
-      <span class="stat-value" id="statMemberLevel"></span>
+      <span class="stat-value" id="statMemberLevel">Premium</span>
     </div>
   </section>
 
+  <!-- ✅ COMPACT BONUS SECTION -->
+  <section class="dashboard-section bonus-compact-section">
+    <div class="bonus-compact-card">
+      <div class="bonus-compact-header">
+        <i class="fas fa-gift"></i>
+        <h3>Referral Bonus</h3>
+      </div>
+      
+      <div class="bonus-amounts">
+        <div class="bonus-amount-item">
+          <span class="amount-label">Available</span>
+          <span class="amount-value available" id="bonusAvailable"></span>
+        </div>
+        <div class="bonus-divider"></div>
+        <div class="bonus-amount-item">
+          <span class="amount-label">Pending</span>
+          <span class="amount-value pending" id="bonusPending"></span>
+        </div>
+      </div>
+
+      <div class="referral-link-compact">
+        <input type="text" id="referralLink" readonly value="Generating...">
+        <button id="copyBtn" title="Copy link"><i class="fas fa-copy"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOUNT PROFILE SECTION -->
   <section class="dashboard-section profile-section">
     <div class="section-title">
       <span class="gold-text" id="sectionLabelAccount"></span>
@@ -81,6 +114,16 @@
     </div>
   </section>
 
+  <!-- PURCHASE HISTORY SECTION -->
+  <section class="dashboard-section">
+    <div class="section-title">
+      <span class="gold-text" id="sectionLabelPurchases">Orders</span>
+      <h2 id="sectionTitlePurchases">Purchase History</h2>
+    </div>
+    <div class="purchase-list" id="purchaseHistory"></div>
+  </section>
+
+  <!-- SAVED VEHICLES SECTION -->
   <section class="dashboard-section">
     <div class="section-title">
       <span class="gold-text" id="sectionLabelVehicles"></span>
@@ -89,6 +132,7 @@
     <div class="car-grid" id="savedVehicles"></div>
   </section>
 
+  <!-- FINANCE APPLICATIONS SECTION -->
   <section class="dashboard-section">
     <div class="section-title">
       <span class="gold-text" id="sectionLabelFinance"></span>
@@ -96,86 +140,66 @@
     </div>
     <div class="finance-list" id="financeList"></div>
   </section>
-<!-- SECURITY SETTINGS -->
-<section class="dashboard-section">
-    <div class="section-title">
-        <span class="gold-text">Security</span>
-        <h2>Account Security</h2>
-    </div>
 
-    <div class="settings-card">
-        <div class="settings-item">
-            <div>
-                <strong>Password</strong>
-                <p>Change your account password</p>
-            </div>
-            <button class="btn-outline" id="changePasswordBtn">
-                Change
-            </button>
-        </div>
+  <!-- SECURITY SETTINGS -->
+  <section class="dashboard-section">
+      <div class="section-title">
+          <span class="gold-text">Security</span>
+          <h2>Account Security</h2>
+      </div>
 
-        <div class="settings-item">
-            <div>
-                <strong>Email Verification</strong>
-                <p id="emailVerificationStatus">Checking status…</p>
-            </div>
-            <button class="btn-outline" id="verifyEmailBtn">
-                Verify
-            </button>
-        </div>
+      <div class="settings-card">
+          <div class="settings-item">
+              <div>
+                  <strong>Password</strong>
+                  <p>Change your account password</p>
+              </div>
+              <button class="btn-outline" id="changePasswordBtn">
+                  Change
+              </button>
+          </div>
 
-        <div class="settings-item">
-            <div>
-                <strong>Last Login</strong>
-                <p id="lastLoginInfo">—</p>
-            </div>
-        </div>
-    </div>
-</section>
+          <div class="settings-item">
+              <div>
+                  <strong>Email Verification</strong>
+                  <p id="emailVerificationStatus">Checking status…</p>
+              </div>
+              <button class="btn-outline" id="verifyEmailBtn">
+                  Verify
+              </button>
+          </div>
+
+          <div class="settings-item">
+              <div>
+                  <strong>Last Login</strong>
+                  <p id="lastLoginInfo"></p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- DANGER ZONE -->
+  <section class="dashboard-section danger-zone">
+      <div class="section-title">
+          <span class="gold-text">Danger Zone</span>
+          <h2>Delete Account</h2>
+      </div>
+
+      <div class="danger-card">
+          <p>
+              Deleting your account is permanent.  
+              All saved vehicles, applications, and profile data will be removed.
+          </p>
+
+          <button class="btn-danger" id="deleteAccountBtn">
+              Delete My Account
+          </button>
+      </div>
+  </section>
+
 </main>
 
-<div id="editModal" class="modal">
-  <div class="modal-content">
-    <h2 id="modalTitle">Edit Profile</h2>
-    <form id="editForm">
-      <div class="form-group">
-        <label for="editLocation">Location</label>
-        <input type="text" id="editLocation">
-      </div>
-      <div class="form-group">
-        <label for="editPhone">Phone Number</label>
-        <input type="tel" id="editPhone" placeholder="+1 800 000 0000">
-      </div>
-      <div class="form-group">
-        <label for="editCurrency">Preferred Currency (ISO code)</label>
-        <input type="text" id="editCurrency" placeholder="e.g. USD, EUR, NGN, GBP" maxlength="3">
-      </div>
-      <div style="margin-top:1.5rem;">
-        <button type="submit" class="btn-save" id="saveBtn">Save Changes</button>
-        <button type="button" id="cancelEdit" class="btn-cancel">Cancel</button>
-      </div>
-    </form>
-  </div>
-</div>
-<!-- DANGER ZONE -->
-<section class="dashboard-section danger-zone">
-    <div class="section-title">
-        <span class="gold-text">Danger Zone</span>
-        <h2>Delete Account</h2>
-    </div>
-
-    <div class="danger-card">
-        <p>
-            Deleting your account is permanent.  
-            All saved vehicles, applications, and profile data will be removed.
-        </p>
-
-        <button class="btn-danger" id="deleteAccountBtn">
-            Delete My Account
-        </button>
-    </div>
-</section>
-
+<!-- BOTTOM NAVIGATION BAR -->
 <nav class="bottom-tab-bar">
   <a href="index.html" class="tab-item">
     <i class="fas fa-home"></i>
@@ -184,6 +208,10 @@
   <a href="#savedVehicles" class="tab-item">
     <i class="fas fa-heart"></i>
     <span id="navSaved"></span>
+  </a>
+  <a href="inventory.html" class="tab-item">
+    <i class="fas fa-warehouse"></i>
+    <span id="navInventory"></span>
   </a>
   <a href="financing.html" class="tab-item">
     <i class="fas fa-file-invoice-dollar"></i>
@@ -194,6 +222,43 @@
     <span id="navProfile"></span>
   </a>
 </nav>
+
+<!-- EDIT PROFILE MODAL -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <h2 id="modalTitle">Edit Profile</h2>
+    <form id="editForm">
+      <div class="form-group">
+        <label for="editLocation">Location</label>
+        <select id="editLocation">
+          <option value="">Select a country...</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="editPhone">Phone Number</label>
+        <input type="tel" id="editPhone" placeholder="+1 800 000 0000">
+      </div>
+      <div class="form-group">
+        <label for="editCurrency">Preferred Currency</label>
+        <select id="editCurrency">
+          <option value="">Select a currency...</option>
+        </select>
+      </div>
+      <div style="margin-top:1.5rem;">
+        <button type="submit" class="btn-save" id="saveBtn">Save Changes</button>
+        <button type="button" id="cancelEdit" class="btn-cancel">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Loading Spinner -->
+<div id="loader">
+    <div class="loader-content">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+</div>
 
 <script type="module" src="dashboard.js"></script>
 

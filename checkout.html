@@ -1,0 +1,378 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Q AutoLux</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">           
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+
+    <header class="checkout-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Q <span class="accent">AUTOLUX</span></a>
+            <div class="secure-indicator">
+                <i class="fas fa-lock"></i> 
+                <span>256-Bit Encrypted Payment</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="checkout-main">
+        <div class="container-narrow">
+            
+            <header class="section-title centered">
+                <span class="gold-text">PREMIUM VEHICLE ACQUISITION</span>
+                <h2>Secure Payment Portal</h2>
+                <p class="subtitle">Complete your luxury vehicle purchase with confidence</p>
+            </header>
+
+            <div class="checkout-grid">
+
+                <aside class="summary-card">
+                    <div class="card-header">
+                        <h3>Order Summary</h3>
+                    </div>
+                    
+                    <div class="card-body">
+                        <div class="order-vehicle">
+                            <div class="vehicle-preview">
+                                <img id="vehiclePreviewImg" alt="Selected Vehicle" style="display: none;">
+                            </div>
+                            <div class="vehicle-info">
+                                <span class="gold-text condition-tag" id="vehicleCondition"></span>
+                                <h4 id="vehicleTitle"></h4>
+                                <p class="vehicle-ref" id="vehicleRef"></p>
+                            </div>
+                        </div>
+
+                        <div class="summary-totals">
+                            <div class="total-row">
+                                <span>Vehicle Price</span>
+                                <span id="vehiclePrice" class="price-amount"></span>
+                            </div>
+                            <div id="additionalFeesContainer"></div>
+                            <div id="bonusSection" class="bonus-section" style="display: none;">
+                                <div class="bonus-available-display">
+                                    <div class="bonus-info">
+                                        <i class="fas fa-gift"></i>
+                                        <span>Available Bonus</span>
+                                    </div>
+                                    <span id="availableBonusAmount" class="bonus-amount-text"></span>
+                                </div>
+                                <div class="bonus-apply-row">
+                                    <input type="number" id="bonusInput" placeholder="0.00" step="0.01" min="0">
+                                    <button id="applyBonusBtn" class="btn-apply-bonus">Apply</button>
+                                </div>
+                                <div id="bonusAppliedRow" class="total-row bonus-applied-row" style="display: none;">
+                                    <span>Bonus Applied</span>
+                                    <span id="bonusAppliedAmount" class="bonus-deduction"></span>
+                                </div>
+                            </div>
+                            <div class="total-row grand-total">
+                                <strong>Total Amount Due</strong>
+                                <strong id="totalDue" class="accent"></strong>
+                            </div>
+                        </div>
+
+                        <div class="secure-note">
+                            <i class="fas fa-shield-check"></i>
+                            <div>
+                                <strong>Bank-Grade Security</strong>
+                                <p>Your payment data is protected with military-grade 256-bit SSL encryption. We never store your card details.</p>
+                            </div>
+                        </div>
+
+                        <div class="trust-badges">
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>PCI DSS Compliant</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Verified by Visa</span>
+                            </div>
+                            <div class="trust-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mastercard SecureCode</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+
+                <section class="payment-card">
+                    <div class="payment-method-tabs">
+                        <button class="tab-btn active" data-tab="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Card Payment</span>
+                        </button>
+                        <button class="tab-btn" data-tab="bank">
+                            <i class="fas fa-university"></i>
+                            <span>Bank Transfer</span>
+                        </button>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="tab-panel active" id="card-panel">
+                            <div class="panel-header">
+                                <h4>Debit / Credit Card Payment</h4>
+                                <p>Instant confirmation • Fastest delivery</p>
+                            </div>
+
+                            <form id="paymentForm" class="payment-form">
+                                <div class="form-group">
+                                    <label for="cardNumber">Card Number</label>
+                                    <div class="input-wrapper">
+                                        <input 
+                                            type="text" 
+                                            id="cardNumber" 
+                                            placeholder="0000 0000 0000 0000" 
+                                            maxlength="19" 
+                                            required 
+                                            autocomplete="cc-number">
+                                        <i class="fas fa-credit-card input-icon"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group half">
+                                        <label for="expiry">Expiry Date</label>
+                                        <input 
+                                            type="text" 
+                                            id="expiry" 
+                                            placeholder="MM / YY" 
+                                            maxlength="7" 
+                                            required 
+                                            autocomplete="cc-exp">
+                                    </div>
+                                    <div class="form-group half">
+                                        <label for="cvv">CVV / Security Code</label>
+                                        <input 
+                                            type="text" 
+                                            id="cvv" 
+                                            placeholder="123" 
+                                            maxlength="4" 
+                                            required 
+                                            autocomplete="cc-csc">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cardName">Cardholder Name</label>
+                                    <input 
+                                        type="text" 
+                                        id="cardName" 
+                                        placeholder="Name as it appears on card" 
+                                        required 
+                                        autocomplete="cc-name">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="billingEmail">Email Address</label>
+                                    <input 
+                                        type="email" 
+                                        id="billingEmail" 
+                                        placeholder="your.email@example.com" 
+                                        required 
+                                        autocomplete="email">
+                                </div>
+
+                                <button type="submit" class="btn-gold full-width">
+                                    <i class="fas fa-lock"></i>
+                                    Complete Secure Payment
+                                </button>
+
+                                <div class="payment-note">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p>By proceeding, you agree to our Terms of Service and Privacy Policy. Your card will be charged immediately upon confirmation.</p>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="tab-panel" id="bank-panel">
+                            <div class="panel-header">
+                                <h4>Bank Transfer Payment</h4>
+                                <p>Transfer to our account • Confirmation within 30 minutes</p>
+                            </div>
+
+                            <div class="bank-transfer-content">
+                                <div class="bank-details-box">
+                                    <div class="bank-detail-row">
+                                        <span class="detail-label">Bank Name</span>
+                                        <span class="detail-value">
+                                            <strong id="bankName"></strong>
+                                            <button class="copy-btn" data-copy-bank>
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+
+                                    <div class="bank-detail-row">
+                                        <span class="detail-label">Account Number</span>
+                                        <span class="detail-value">
+                                            <strong id="accountNumber"></strong>
+                                            <button class="copy-btn" data-copy-account>
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+
+                                    <div class="bank-detail-row">
+                                        <span class="detail-label">Account Name</span>
+                                        <span class="detail-value">
+                                            <strong id="accountName"></strong>
+                                            <button class="copy-btn" data-copy-name>
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+
+                                    <div class="bank-detail-row highlight">
+                                        <span class="detail-label">Amount to Transfer</span>
+                                        <span class="detail-value">
+                                            <strong id="transferAmount" class="accent"></strong>
+                                            <button class="copy-btn" data-copy-amount>
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+
+                                    <div class="bank-detail-row">
+                                        <span class="detail-label">Payment Reference</span>
+                                        <span class="detail-value">
+                                            <strong id="paymentReference"></strong>
+                                            <button class="copy-btn" data-copy-reference>
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="transfer-instructions">
+                                    <h5><i class="fas fa-info-circle"></i> Important Instructions</h5>
+                                    <ol>
+                                        <li>Transfer the <strong>exact amount</strong> shown above to avoid processing delays</li>
+                                        <li>Use the <strong>payment reference</strong> in your transfer description/narration</li>
+                                        <li>After completing the transfer, click "I've Completed Transfer" below</li>
+                                        <li>Your order will be confirmed within <strong>30 minutes</strong> of payment verification</li>
+                                    </ol>
+                                </div>
+
+                                <div class="ussd-quick-transfer" id="ussdCodesContainer" style="display: none;">
+                                    <h5>Quick Transfer via USSD</h5>
+                                    <div class="ussd-codes" id="ussdCodesList">
+                                    </div>
+                                </div>
+
+                                <form id="bankTransferForm" class="bank-confirm-form">
+                                    <div class="form-group">
+                                        <label for="senderName">Your Full Name</label>
+                                        <input 
+                                            type="text" 
+                                            id="senderName" 
+                                            placeholder="Name on your bank account" 
+                                            required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="senderEmail">Email Address</label>
+                                        <input 
+                                            type="email" 
+                                            id="senderEmail" 
+                                            placeholder="your.email@example.com" 
+                                            required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="senderPhone">Phone Number</label>
+                                        <input 
+                                            type="tel" 
+                                            id="senderPhone" 
+                                            placeholder="+234 800 000 0000" 
+                                            required>
+                                    </div>
+
+                                    <button type="submit" class="btn-gold full-width">
+                                        <i class="fas fa-check-circle"></i>
+                                        I've Completed the Transfer
+                                    </button>
+                                </form>
+
+                                <div class="transfer-note">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p>Please note: Card payments receive <strong>priority processing</strong> and immediate confirmation. Bank transfers may take up to 24 hours for verification during weekends and public holidays.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="back-navigation">
+                <a href="javascript:history.back()" class="btn-text-only">
+                    <i class="fas fa-arrow-left"></i> Return to Vehicle Details
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-content">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h2 id="successTitle"></h2>
+            <p id="successMessage"></p>
+
+            <div class="success-summary">
+                <h4 id="successVehicle"></h4>
+                <p id="successPrice"></p>
+                <p id="successReference"></p>
+            </div>
+
+            <div class="success-actions">
+                <a href="dashboard.html" class="btn-gold">View Order Status</a>
+                <a href="index.html" class="btn-outline">Return to Homepage</a>
+            </div>
+
+            <p class="success-note">
+                <i class="fas fa-headset"></i>
+                Our premium concierge team will contact you within <strong>30 minutes</strong> to arrange delivery.
+            </p>
+        </div>
+    </div>
+
+    <footer class="checkout-footer">
+         <div class="footer-bottom">
+        <div class="footer-payments">
+            <img src="visa.png" alt="Visa">
+            <img src="mastercard.png" alt="Mastercard">
+            <img src="amex.png" alt="American Express">
+            <img src="paypal.png" alt="PayPal">
+            <img src="apple-pay.png" alt="Apple Pay">
+            <img src="google-pay.png" alt="Google Pay">
+            <img src="wire.png" alt="Bank Transfer">
+              <img src="bank-transfer.png" alt="Wire Transfer">
+        </div>
+         <p>© 2026 Q AutoLux. All rights reserved. | Transactions secured by industry-leading encryption technology.</p>
+               <div class="footer-container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Refund Policy</a>
+                <a href="#">Contact Support</a>
+            </div>
+        </div>
+    </div>
+    </footer>
+    <div id="loader">
+    <div class="loader-content">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+</div>
+
+    <script type="module" src="checkout.js"></script>
+</body>
+</html>
