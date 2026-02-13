@@ -338,24 +338,31 @@
                 <i class="fas fa-envelope-circle-check"></i>
             </div>
             <h2>Verify Your Email</h2>
-            <p class="verification-message">We've sent a verification link to:</p>
+            
+            <!-- ADDED: Display verification code -->
+            <div class="verification-code-display">
+                <p style="margin-bottom: 10px; font-weight: 600; color: #D4AF37;">Your Verification Code:</p>
+                <div class="code-box">
+                    <span id="verificationCode" style="font-size: 32px; font-weight: 700; letter-spacing: 8px; color: #D4AF37;">------</span>
+                </div>
+                <p style="margin-top: 10px; font-size: 14px; color: #888;">Save this code - you'll need it to verify your account</p>
+            </div>
+            
+            <p class="verification-message" style="margin-top: 20px;">We've also sent a verification link to:</p>
             <p class="verification-email" id="verificationEmail"></p>
             <div class="verification-steps">
                 <div class="step-item">
                     <i class="fas fa-1"></i>
-                    <span>Check your inbox (and spam folder)</span>
+                    <span><strong>Option 1:</strong> Click the link in your email</span>
                 </div>
                 <div class="step-item">
                     <i class="fas fa-2"></i>
-                    <span>Click the verification link</span>
-                </div>
-                <div class="step-item">
-                    <i class="fas fa-3"></i>
-                    <span>Return here to login</span>
+                    <span><strong>Option 2:</strong> Use the code above on the verification page</span>
                 </div>
             </div>
-            <button class="btn-gold" id="closeVerificationModal">Got It</button>
-            <p class="resend-text">Didn't receive the email? Check spam folder or contact support</p>
+            <button class="btn-gold" id="verifyCodeBtn" style="margin-top: 20px;">Verify with Code Now</button>
+            <button class="btn-gold" id="closeVerificationModal" style="margin-top: 10px; background: transparent; border: 2px solid #D4AF37; color: #D4AF37;">I'll Verify Later</button>
+            <p class="resend-text">⚠️ Can't find the email? Check your SPAM folder - it might be there!</p>
         </div>
     </div>
 

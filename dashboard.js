@@ -342,9 +342,32 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   onAuthStateChanged(auth, async (user) => {
     if (user) {
-      if (!user.emailVerified) {
+      try {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userDocRef);
+        
+        const isEmailVerified = user.emailVerified;
+        const isCodeVerified = userDoc.exists() && userDoc.data().codeVerified;
+        
+        if (!isEmailVerified && !isCodeVerified) {
+          hideLoader();
+          showError("⚠️ Email Verification Required - Please check your inbox and verify your email address before accessing your dashboard.");
+          setTimeout(() => {
+            signOut(auth);
+            window.location.href = "index.html";
+          }, 4000);
+          return;
+        }
+        
+        if (isEmailVerified || isCodeVerified) {
+          await setDoc(userDocRef, { 
+            emailVerified: true, 
+            codeVerified: true 
+          }, { merge: true });
+        }
+      } catch (error) {
         hideLoader();
-        showError("⚠️ Email Verification Required - Please check your inbox and verify your email address before accessing your dashboard.");
+        showError("Error checking verification status");
         setTimeout(() => {
           signOut(auth);
           window.location.href = "index.html";
@@ -355,7 +378,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       await populateDashboard(user);
       await loadBonusData(user);
       await generateReferralLink(user);
-      setupSecurityFeatures(user);
+      await setupSecurityFeatures(user);
     } else {
       window.location.href = "index.html";
     }
@@ -436,7 +459,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  function setupSecurityFeatures(user) {
+  async function setupSecurityFeatures(user) {
     document.getElementById('changePasswordBtn')?.addEventListener('click', async () => {
       const email = user.email;
       if (!email) {
@@ -456,7 +479,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 
     document.getElementById('verifyEmailBtn')?.addEventListener('click', async () => {
-      if (user.emailVerified) {
+      const userDocRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userDocRef);
+      const isCodeVerified = userDoc.exists() && userDoc.data().codeVerified;
+      
+      if (user.emailVerified || isCodeVerified) {
         showSuccess("Your email is already verified!");
         return;
       }
@@ -474,9 +501,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const statusEl = document.getElementById('emailVerificationStatus');
     if (statusEl) {
-      statusEl.textContent = user.emailVerified ? "✓ Verified" : "Not verified";
-      statusEl.style.color = user.emailVerified ? "var(--success)" : "var(--warning)";
-      statusEl.style.fontWeight = "600";
+      try {
+        const userDocRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userDocRef);
+        const isCodeVerified = userDoc.exists() && userDoc.data().codeVerified;
+        const isVerified = user.emailVerified || isCodeVerified;
+        
+        statusEl.textContent = isVerified ? "✓ Verified" : "Not verified";
+        statusEl.style.color = isVerified ? "var(--success)" : "var(--warning)";
+        statusEl.style.fontWeight = "600";
+      } catch (error) {
+        statusEl.textContent = user.emailVerified ? "✓ Verified" : "Not verified";
+        statusEl.style.color = user.emailVerified ? "var(--success)" : "var(--warning)";
+        statusEl.style.fontWeight = "600";
+      }
     }
 
     const lastLoginEl = document.getElementById('lastLoginInfo');

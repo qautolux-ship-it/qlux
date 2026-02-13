@@ -50,6 +50,11 @@ const CURRENCY_MAP = {
   ar: "AED", ko: "KRW"
 };
 
+// ========== ADDED: Generate random 6-digit verification code ==========
+function generateVerificationCode() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
 async function fetchExchangeRates() {
   try {
     const rateDoc = await getDoc(doc(db, "settings", "exchangeRates"));
@@ -197,10 +202,12 @@ async function updateFrontPageBonus(user) {
     bonusText.textContent = "Sign up today and get $250 bonus when you refer a friend who makes their first purchase";
     bonusAction.textContent = "Create Account";
     bonusAction.href = "#";
-    bonusAction.onclick = (e) => {
+    bonusAction.addEventListener("click", (e) => {
       e.preventDefault();
-      openModal("signup");
-    };
+      if (window.openModal) {
+        window.openModal("signup");
+      }
+    });
     bonusContainer.style.display = "block";
     return;
   }
@@ -570,6 +577,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     switchTab(defaultTab);
   }
 
+  window.openModal = openModal;
+
   function closeModal() {
     if (!overlay) return;
     overlay.classList.remove("active");
@@ -696,6 +705,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
+        // ========== ADDED: Generate verification code ==========
+        const verificationCode = generateVerificationCode();
+
         await sendEmailVerification(user);
 
         const autoCurrency = getLikelyCurrencyFromLocale();
@@ -711,7 +723,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           bonusAvailable: 0,
           bonusPending: 0,
           createdAt: new Date().toISOString(),
-          emailVerified: false
+          emailVerified: false,
+          verificationCode: verificationCode, // ========== ADDED: Store code ==========
+          codeExpiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() // 24 hours
         };
 
         if (referralCode) {
@@ -725,7 +739,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const verificationModal = document.getElementById('verificationModal');
         const verificationEmailEl = document.getElementById('verificationEmail');
+        const verificationCodeEl = document.getElementById('verificationCode'); // ========== ADDED ==========
+        
         if (verificationEmailEl) verificationEmailEl.textContent = email;
+        if (verificationCodeEl) verificationCodeEl.textContent = verificationCode; // ========== ADDED: Display code ==========
         if (verificationModal) verificationModal.classList.add('active');
 
         await signOut(auth);
@@ -753,6 +770,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (verificationModal) verificationModal.classList.remove('active');
   });
 
+  // ========== ADDED: Handle "Verify with Code Now" button ==========
+  document.getElementById('verifyCodeBtn')?.addEventListener('click', () => {
+    window.location.href = 'verify.html';
+  });
+
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -765,21 +787,35 @@ document.addEventListener("DOMContentLoaded", async () => {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        if (!user.emailVerified) {
+        // ========== FIXED: Check verification properly ==========
+        const userDocRef = doc(db, "users", user.uid);
+        const userDoc = await getDoc(userDocRef);
+        
+        // Check if user is verified via EITHER method
+        const isEmailVerified = user.emailVerified; // Firebase Auth
+        const isCodeVerified = userDoc.exists() && userDoc.data().codeVerified; // Firestore
+        
+        // If NEITHER method verified, block login
+        if (!isEmailVerified && !isCodeVerified) {
           await signOut(auth);
           hideLoader();
+          showError("Email not verified. Please verify your email or use the verification code.");
           
-          const verificationModal = document.getElementById('verificationModal');
-          const verificationEmailEl = document.getElementById('verificationEmail');
-          if (verificationEmailEl) verificationEmailEl.textContent = email;
-          if (verificationModal) verificationModal.classList.add('active');
-          
-          showError("Email not verified. Please check your inbox and click the verification link.");
+          // Redirect to verify page
+          setTimeout(() => {
+            window.location.href = 'verify.html?email=' + encodeURIComponent(email);
+          }, 2000);
           return;
         }
 
-        const userDocRef = doc(db, "users", user.uid);
-        await setDoc(userDocRef, { emailVerified: true }, { merge: true });
+        // ========== CRITICAL FIX: Update Firestore to mark both as verified ==========
+        // This ensures dashboard and other pages see verified status
+        if (isEmailVerified || isCodeVerified) {
+          await setDoc(userDocRef, { 
+            emailVerified: true, 
+            codeVerified: true 
+          }, { merge: true });
+        }
 
         showSuccess("Welcome back!");
         closeModal();
@@ -833,10 +869,11 @@ document.addEventListener("DOMContentLoaded", async () => {
             bonusAvailable: 0,
             bonusPending: 0,
             createdAt: new Date().toISOString(),
-            emailVerified: true
+            emailVerified: true,
+            codeVerified: true // ========== ADDED: Google auth is pre-verified ==========
           });
         } else {
-          await setDoc(userRef, { emailVerified: true }, { merge: true });
+          await setDoc(userRef, { emailVerified: true, codeVerified: true }, { merge: true }); // ========== ADDED ==========
         }
         
         showSuccess("Signed in with Google!");

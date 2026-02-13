@@ -1384,3 +1384,20 @@ body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--
         font-size: 3rem;
     }
 }
+.verification-code-display {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+    border: 2px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.code-box {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+    padding: 15px 20px;
+    display: inline-block;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    user-select: all;
+}
